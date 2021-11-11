@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700&display=swap');
+
+body {
+  font-family: 'Rubik', sans-serif;
+  letter-spacing: 0.4px;
+  margin: 0;
+  padding: 0;
+}
+
+/**
+* Create a position for the map
+* on the page */
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.map-overlay {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 20px;
+  overflow: auto;
+  border-radius: 3px;
+  /* opacity: 0.5; */
+}
+
+#features {
+  top: 0;
+  height: 300px;
+  margin-top: 20px;
+  width: 350px;
+  /* position: absolute; */
+  /* bottom: 5%; */
+  right: 2%;
+  background: rgba(255, 255, 255, 0.815);
+  box-shadow: 0px 2px 15px 0px rgb(0 0 0 / 16%);
+}
+
+#features h1 {
+  font-size: 24px;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.features-details {
+  margin: 10px;
+}
