@@ -132,5 +132,9 @@ map.on('mousemove', (event) => {
     <p>Taliban Influence Level - ${layerProperties.Influence2009}</p>`
   } else {
     detailsEl.innerHTML = '<p style="text-align: center;">Touch or hover over province to view details</p>'
+    map.fitBounds([
+      [60.5284298033, 29.318572496],
+      [75.1580277851, 38.4862816432]
+    ]);
   }
 });
