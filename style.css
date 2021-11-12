@@ -35,16 +35,45 @@ body {
   /* position: absolute; */
   /* bottom: 5%; */
   right: 2%;
-  background: rgba(255, 255, 255, 0.815);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0px 2px 15px 0px rgb(0 0 0 / 16%);
+  display: flex;
+  flex-direction: column;
+}
+
+#legend {
+  top: 310px;
+  height: 75px;
+  margin-top: 20px;
+  width: 350px;
+  /* position: absolute; */
+  /* bottom: 5%; */
+  right: 2%;
+  background: rgba(255, 255, 255, 0.95);
   box-shadow: 0px 2px 15px 0px rgb(0 0 0 / 16%);
 }
 
-#features h1 {
-  font-size: 24px;
-  font-weight: bolder;
+#features h2 {
   text-align: center;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+#province-name {
+  margin-top: 0;
 }
 
 .features-details {
-  margin: 10px;
+  margin: 0 10px 0 10px;
+  text-align: center;
+}
+
+.features-head {
+  margin-right: 10px;
+  margin-left: 10px;
+  text-align: center;
+}
+
+.features-head h3 {
+  margin: inherit;
 }
