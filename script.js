@@ -38,7 +38,7 @@ map.on('load', () => {
     key.style.backgroundColor = color;
     key.style.border = "thin solid black"
     key.style.display = "inline-block"
-    key.style.margin = "-1px 5px"
+    key.style.margin = "0px 5px -2px 5px"
   
     const info = document.createElement('span');
     info.className = 'legend-info'
