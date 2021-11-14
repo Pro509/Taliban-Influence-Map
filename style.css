@@ -28,7 +28,7 @@ body {
 }
 
 #features {
-  top: 0;
+  top: 15px;
   height: 300px;
   margin-top: 20px;
   width: 350px;
@@ -42,7 +42,7 @@ body {
 }
 
 #legend {
-  top: 310px;
+  top: 325px;
   height: 75px;
   margin-top: 20px;
   width: 350px;
@@ -80,7 +80,20 @@ body {
 
 #legend {
   display: flex;
-  flex-direction: ;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#legend-title {
+  margin-top: 3px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+#legend-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .legend-key {

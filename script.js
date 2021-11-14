@@ -9,10 +9,48 @@ const afghanBoundsCoordinates = [
   [75.1580277851, 38.4862816432]
 ]
 
+const keyColors = [
+  '#590d22',
+  '#c9184a',
+  '#ff8fa3',
+  '#fff0f3'
+]
+
+const keyValues = [
+  'High',
+  'Moderate',
+  'Minimal',
+  'None'
+]
+
 map.getCanvas().style.cursor = 'default';
 map.fitBounds(afghanBoundsCoordinates);
 
 map.on('load', () => {
+  // Generating legend details
+  const legend = document.getElementById('legend-items')
+
+  keyValues.forEach((value, i) => {
+    const color = keyColors[i];
+    const item = document.createElement('div');
+    const key = document.createElement('span');
+    key.className = 'legend-key';
+    key.style.backgroundColor = color;
+    key.style.border = "thin solid black"
+    key.style.display = "inline-block"
+    key.style.margin = "-1px 5px"
+  
+    const info = document.createElement('span');
+    info.className = 'legend-info'
+    info.innerHTML = `${value}`;
+    
+    item.id = `${value}`;
+    item.appendChild(key);
+    item.appendChild(info);
+    legend.appendChild(item);
+  });
+
+  // View province wise data
   map.on('mousemove', (event) => {
     const features = map.queryRenderedFeatures(event.point, {
       layers: ['afghanistan-provinces-heat']
@@ -22,10 +60,22 @@ map.on('load', () => {
     if (features.length) {
       const layerProperties = features[0].properties
       nameEl.innerHTML = `<h3>${layerProperties.NAME}</h3>`
-      detailsEl.innerHTML = `<p>Taliban Influence Level - ${layerProperties.Influence2009}</p>`
+      // Highlighting legend value
+      keyValues.forEach((value) => {
+        if (value == layerProperties.Influence2009){
+          const legendItem = document.getElementById(`${value}`)
+          legendItem.style.opacity = 1
+        } else {
+          const legendItem = document.getElementById(`${value}`)
+          legendItem.style.opacity = 0.2
+        }
+      })
     } else {
       nameEl.innerHTML = '<p style="text-align: center; margin-top: 3.5em;">Touch or hover over province to view details</p>'
-      detailsEl.innerHTML = ''
+      keyValues.forEach((value) => {
+        const legendItem = document.getElementById(`${value}`)
+        legendItem.style.opacity = 1
+      })
       map.fitBounds(afghanBoundsCoordinates);
     }
   });
