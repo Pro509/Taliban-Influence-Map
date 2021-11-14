@@ -77,3 +77,14 @@ body {
 .features-head h3 {
   margin: inherit;
 }
+
+#legend {
+  display: flex;
+  flex-direction: ;
+}
+
+.legend-key {
+  display: inline-block; 
+  width: 15px; 
+  height: 15px;
+}
