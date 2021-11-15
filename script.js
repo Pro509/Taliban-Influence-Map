@@ -53,7 +53,7 @@ map.on('load', () => {
   // View province wise data
   map.on('mousemove', (event) => {
     const features = map.queryRenderedFeatures(event.point, {
-      layers: ['afghanistan-provinces-heat']
+      layers: ['afghanistan-provinces-2009']
     });
     const nameEl = document.getElementById('province-name')
     const detailsEl = document.getElementById('province-details')
