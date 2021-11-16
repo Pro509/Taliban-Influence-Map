@@ -24,8 +24,8 @@ const keyValues = [
 ]
 
 const layerIds = [
-  'afghanistan-provinces-2012', 
-  'afghanistan-provinces-2009'
+  'afghanistan-provinces-2009',
+  'afghanistan-provinces-2012'
 ]
 
 map.getCanvas().style.cursor = 'default';
