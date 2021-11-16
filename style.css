@@ -91,7 +91,7 @@ body {
   border: 1px solid black;
 }
 
-.button:hover {
+.button:hover, .active {
   color: white;
   background-color: black;
 }

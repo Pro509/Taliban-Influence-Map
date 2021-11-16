@@ -56,62 +56,23 @@ map.on('load', () => {
   });
 
   // Toggling Layer (Work In Progress!)
-  const visibleLayer = (() => {  
-    for (const id of layerIds) {
-      // Skip layers that already have a button set up.
-      if (document.getElementById(id)) {
-        continue;
-      }
-      // Create a link.
-      const link = document.createElement('a');
-      link.id = id;
-      link.href = '#';
-      link.textContent = id.split("-")[2];
-      link.className = 'button';
-
-      const layers = document.getElementById('layer-toggles');
-      layers.appendChild(link);
-
-      link.onclick = function (e) {
-        const clickedLayer = this.id;
-        e.preventDefault();
-        e.stopPropagation();
-         
-        const visibility = map.getLayoutProperty(
-          clickedLayer,
-          'visibility'
-        );
-        // Toggle layer visibility by changing the layout object's visibility property.
-        if (visibility === 'visible') {
-          map.setLayoutProperty(clickedLayer, 'visibility', 'none');
-          this.className = 'button';
-        } else {
-          this.className = 'button active';
-          map.setLayoutProperty(
-            clickedLayer,
-            'visibility',
-            'visible'
-          );
-        }
-      };
-    
-    };
-    return 'afghanistan-provinces-2009'
-  })()
   
   // View province wise data
   map.on('mousemove', (event) => {
+    // const currentLayer = 'afghanistan-provinces-2012'
+    const activeButton = document.getElementsByClassName('active')
+    const currentLayer = activeButton[0].getAttribute("id")
+
     const features = map.queryRenderedFeatures(event.point, {
-      layers: [visibleLayer]
+      layers: [currentLayer]
     });
     const nameEl = document.getElementById('province-name')
     const detailsEl = document.getElementById('province-details')
-    console.log(visibleLayer)
     if (features.length) {
       const layerProperties = features[0].properties
       const provinceName = layerProperties.NAME
       var talibanInfluence = '';
-      switch (visibleLayer) {
+      switch (currentLayer) {
         case 'afghanistan-provinces-2009':
           talibanInfluence = layerProperties.Influence2009;
           break;
@@ -121,7 +82,7 @@ map.on('load', () => {
         default:
           talibanInfluence = 'None';
       }
-      console.log(talibanInfluence)
+      // console.log(talibanInfluence)
 
       nameEl.innerHTML = `<h3>${provinceName}</h3>`
       // Highlighting legend value
@@ -143,5 +104,48 @@ map.on('load', () => {
 });
 
 map.on('idle', () => {
-  const layer1 = 10;
+  for (const id of layerIds) {
+    // Skip layers that already have a button set up.
+    if (document.getElementById(id)) {
+      continue;
+    }
+    // Create a link.
+    const link = document.createElement('a');
+    link.id = id;
+    link.href = '#';
+    link.textContent = id.split("-")[2];
+    if (id == 'afghanistan-provinces-2009') {
+      link.className = 'button active';
+    } else link.className = 'button';
+
+    const layers = document.getElementById('layer-toggles');
+    layers.appendChild(link);
+
+    link.onclick = function (e) {
+      const clickedLayer = this.id;
+      e.preventDefault();
+      e.stopPropagation();
+       
+      const visibility = map.getLayoutProperty(
+        clickedLayer,
+        'visibility'
+      );
+
+      layerIds.forEach((id) => {
+        if (id === clickedLayer) {
+          map.setLayoutProperty(
+            clickedLayer,
+            'visibility',
+            'visible'
+          );
+          this.className = 'button active';
+        } else {
+          const otherLayerBtn = document.getElementById(id)
+          otherLayerBtn.className = 'button'
+          map.setLayoutProperty(id, 'visibility', 'none');
+        }
+      })
+      // Toggle layer visibility by changing the layout object's visibility property.
+    };
+  };
 })
