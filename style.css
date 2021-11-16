@@ -59,6 +59,17 @@ body {
   margin-bottom: 0;
 }
 
+.heading {
+  display: flex;
+  flex-direction: column;
+}
+
+#layer-toggles {
+  font-size: large;
+  text-align: center;
+  margin: 10px;
+}
+
 #province-name {
   margin-top: 0;
 }
@@ -89,11 +100,14 @@ body {
   color: black;
   padding: 2px 6px 2px 6px;
   border: 1px solid black;
+  opacity: 0.3;
 }
 
 .button:hover, .active {
   color: white;
-  background-color: black;
+  background-color: #8b0000;
+  border: 1px solid #8b0000;
+  opacity: 1;
 }
 
 #legend {
