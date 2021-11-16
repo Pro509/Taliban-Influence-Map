@@ -67,7 +67,8 @@ body {
 #layer-toggles {
   font-size: large;
   text-align: center;
-  margin: 10px;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 #province-name {
