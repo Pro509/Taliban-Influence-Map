@@ -1,4 +1,4 @@
-# Taliban Influence Over Afghanistan
+# Mapping Taliban's Influence Over Afghanistan
 
 The aim of the interactive map is to provide province wise taliban influence level across time along with general summary statistics. This map has been built as a part of the research project on the impact of the Taliban's influence and governance on women and child health outcomes.  This research project is for ECO-3650: Health Economics and supervised by Professor Aparajita Dasgupta. 
 
