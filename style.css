@@ -134,3 +134,17 @@ body {
   width: 15px; 
   height: 15px;
 }
+
+#footer {
+  height: 30px;
+  width: 100%;
+  background-color: white;
+  margin-right: 0;
+  text-align: center;
+}
+
+#footer p {
+  font-size: 11px;
+  margin-top: 8px;
+  margin-bottom: 2px;
+}

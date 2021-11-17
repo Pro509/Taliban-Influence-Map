@@ -5,8 +5,8 @@ const map = new mapboxgl.Map({
 });
 
 const afghanBoundsCoordinates = [
-  [62.5, 29.318572496],
-  [75.1580277851, 38.4862816432]
+  [58.5506, 27.062],
+  [80.5703, 39.3044]
 ]
 
 const keyColors = [
@@ -44,25 +44,25 @@ map.on('load', () => {
     key.style.border = 'thin solid black'
     key.style.display = 'inline-block'
     key.style.margin = '0px 5px -2px 5px'
-  
+
     const info = document.createElement('span');
     info.className = 'legend-info'
     info.innerHTML = `${value}`;
-    
+
     item.id = `${value}`;
     item.appendChild(key);
     item.appendChild(info);
     legend.appendChild(item);
   });
 
-  // Toggling Layer (Work In Progress!)
-  
+
   // View province wise data
   map.on('mousemove', (event) => {
-    // const currentLayer = 'afghanistan-provinces-2012'
+    // fetching the user chosen layer from buttons
     const activeButton = document.getElementsByClassName('active')
     const currentLayer = activeButton[0].getAttribute("id")
 
+    // Querying the features of the chosen layer
     const features = map.queryRenderedFeatures(event.point, {
       layers: [currentLayer]
     });
@@ -71,7 +71,7 @@ map.on('load', () => {
     if (features.length) {
       const layerProperties = features[0].properties
       const provinceName = layerProperties.NAME
-      var talibanInfluence = '';
+      let talibanInfluence = null;
       switch (currentLayer) {
         case 'afghanistan-provinces-2009':
           talibanInfluence = layerProperties.Influence2009;
@@ -82,13 +82,13 @@ map.on('load', () => {
         default:
           talibanInfluence = 'None';
       }
-      // console.log(talibanInfluence)
-
+      // Adding fetched layer details to the info table 
       nameEl.innerHTML = `<h3>${provinceName}</h3>`
+
       // Highlighting legend value
       keyValues.forEach((value) => {
         const legendItem = document.getElementById(`${value}`)
-        if (value == talibanInfluence){
+        if (value == talibanInfluence) {
           legendItem.style.opacity = 1;
         } else legendItem.style.opacity = 0.2;
       })
@@ -98,46 +98,47 @@ map.on('load', () => {
         const legendItem = document.getElementById(`${value}`)
         legendItem.style.opacity = 1
       })
+      // ensuring that the map frame focuses on Afghanistan only
       map.fitBounds(afghanBoundsCoordinates);
     }
   });
 });
 
+// Runs when the last frame of the map has been rendered 
 map.on('idle', () => {
   for (const id of layerIds) {
     // Skip layers that already have a button set up.
     if (document.getElementById(id)) {
       continue;
     }
-    // Create a link.
+    // Create a link which will act as a button.
     const link = document.createElement('a');
     link.id = id;
     link.href = '#';
     link.textContent = id.split("-")[2];
+    // Hard-coded, where the base layer from mapbox studio is toggled for button 
     if (id == 'afghanistan-provinces-2009') {
       link.className = 'button active';
     } else link.className = 'button';
-
+    // Adding the layer buttons to the button group div element
     const layers = document.getElementById('layer-toggles');
     layers.appendChild(link);
 
+    // Toggling layers logic for the created layer buttons
     link.onclick = function (e) {
       const clickedLayer = this.id;
       e.preventDefault();
       e.stopPropagation();
-       
-      const visibility = map.getLayoutProperty(
-        clickedLayer,
-        'visibility'
-      );
 
       layerIds.forEach((id) => {
+        // Toggle layer visibility by changing the layout object's visibility property.
         if (id === clickedLayer) {
           map.setLayoutProperty(
             clickedLayer,
             'visibility',
             'visible'
           );
+          // Setting respective layer button class to active 
           this.className = 'button active';
         } else {
           const otherLayerBtn = document.getElementById(id)
@@ -145,7 +146,6 @@ map.on('idle', () => {
           map.setLayoutProperty(id, 'visibility', 'none');
         }
       })
-      // Toggle layer visibility by changing the layout object's visibility property.
     };
   };
 })
