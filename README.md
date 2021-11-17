@@ -1,6 +1,5 @@
 # Afghanistan Map
 
-Deployed to https://taliban-healthecon21.netlify.app
 
 Current deployment status: 
 
