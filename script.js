@@ -141,10 +141,10 @@ map.on('idle', () => {
             'visible'
           );
           // Setting respective layer button class to active 
-          this.classList.add = 'active';
+          this.className = 'button active';
         } else {
           const otherLayerBtn = document.getElementById(id)
-          otherLayerBtn.classList.remove = 'active'
+          otherLayerBtn.className = 'button'
           map.setLayoutProperty(id, 'visibility', 'none');
         }
       })
