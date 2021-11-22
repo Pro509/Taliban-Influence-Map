@@ -129,6 +129,13 @@ body {
   justify-content: space-evenly;
 }
 
+#legend-data-source {
+  text-align: right;
+  font-size: 10px;
+  margin-right: 5px;
+  opacity: 0.5;
+}
+
 .legend-key {
   display: inline-block; 
   width: 15px; 
@@ -136,7 +143,7 @@ body {
 }
 
 #footer {
-  height: 30px;
+  height: 40px;
   width: 100%;
   background-color: white;
   margin-right: 0;
