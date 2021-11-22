@@ -91,14 +91,13 @@ map.on('load', () => {
       keyValues.forEach((value) => {
         const legendItem = document.getElementById(`${value}`)
         if (value == talibanInfluence) {
-          legendItem.style.opacity = 1;
-        } else legendItem.style.opacity = 0.2;
+          $(`#${value}`).css("opacity","1")
+        } else $(`#${value}`).css("opacity","0.2")
       })
     } else {
       nameEl.innerHTML = '<p style="text-align: center; margin-top: 3.5em;">Touch or hover over province to view details</p>'
       keyValues.forEach((value) => {
-        const legendItem = document.getElementById(`${value}`)
-        legendItem.style.opacity = 1
+        $(`#${value}`).css("opacity","1")
       })
       // ensuring that the map frame focuses on Afghanistan only
       map.fitBounds(afghanBoundsCoordinates);
@@ -118,13 +117,13 @@ map.on('idle', () => {
     link.id = id;
     link.href = '#';
     link.textContent = id.split("-")[2];
-    // Hard-coded, where the base layer from mapbox studio is toggled for button 
-    if (id == 'afghanistan-provinces-2009') {
-      link.className = 'button active';
-    } else link.className = 'button';
     // Adding the layer buttons to the button group div element
     const layers = document.getElementById('layer-toggles');
     layers.appendChild(link);
+    // Hard-coded, where the base layer from mapbox studio is toggled for button 
+    if (id == "afghanistan-provinces-2009") {
+      $(`#${id}`).addClass("active button")
+    } else $(`#${id}`).addClass("button");
 
     // Toggling layers logic for the created layer buttons
     link.onclick = function (e) {
@@ -141,10 +140,9 @@ map.on('idle', () => {
             'visible'
           );
           // Setting respective layer button class to active 
-          this.className = 'button active';
+          $(`#${id}`).addClass("active")
         } else {
-          const otherLayerBtn = document.getElementById(id)
-          otherLayerBtn.className = 'button'
+          $(`#${id}`).removeClass("active")
           map.setLayoutProperty(id, 'visibility', 'none');
         }
       })
