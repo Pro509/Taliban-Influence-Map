@@ -91,7 +91,6 @@ body {
 }
 
 .button-grp {
-  cursor: pointer; /* Pointer/hand icon */
   float: left;
 }
 
@@ -102,6 +101,7 @@ body {
   padding: 2px 6px 2px 6px;
   border: 1px solid black;
   opacity: 0.3;
+  cursor: pointer;
 }
 
 .button:hover, .active {
