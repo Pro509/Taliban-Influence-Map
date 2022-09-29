@@ -1,44 +1,64 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Taliban In Afghanistan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-Z0JVXY3TZV"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-<head>
-  <meta charset='utf-8' />
-  <title>Taliban In Afghanistan</title>
-  <meta name='viewport' content='width=device-width, initial-scale=1' />
-  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.js'></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.css' rel='stylesheet' />
-  <link rel="stylesheet" href="style.css">
-</head>
+      gtag("config", "G-Z0JVXY3TZV");
+    </script>
+    <link
+      href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
-  <div id='map'></div>
-  <div class="map-overlay" id="features">
-    <div class="heading">
-      <h2 class="features-head">Taliban Influence In Afghanistan Provinces</h2>
-      <div id="layer-toggles" class="button-grp"></div>
-      <hr class="features-head">
-    </div>
-    <div class="province-info-box">
-      <div class="features-details" id="province-name">
-        <p style="text-align: center; margin-top: 3.5em;">Touch or hover over province to view details</p>
+  <body>
+    <div id="map"></div>
+    <div class="map-overlay" id="features">
+      <div class="heading">
+        <h2 class="features-head">
+          Taliban Influence In Afghanistan Provinces
+        </h2>
+        <div id="layer-toggles" class="button-grp"></div>
+        <hr class="features-head" />
       </div>
-      <div class="features-details" id="province-details"></div>
+      <div class="province-info-box">
+        <div class="features-details" id="province-name">
+          <p style="text-align: center; margin-top: 3.5em">
+            Touch or hover over province to view details
+          </p>
+        </div>
+        <div class="features-details" id="province-details"></div>
+      </div>
     </div>
-  </div>
-  <div class="map-overlay" id="legend">
-    <div id="legend-title"><b>Level of Influence</b></div>
-    <div id="legend-items"></div>
-    <div id="legend-data-source">Source: FDD's Long War Journal</div>
-  </div>
-  <div class="map-overlay" id="footer">
-    <p>
-      Interactive map built by Akshar and Pritish for <strong>ECO-3650: Health Economics</strong> taught by
-      <strong>Professor Aparajita Dasgupta</strong> (2021)
-    </p>
-  </div>
-</body>
+    <div class="map-overlay" id="legend">
+      <div id="legend-title"><b>Level of Influence</b></div>
+      <div id="legend-items"></div>
+      <div id="legend-data-source">Source: FDD's Long War Journal</div>
+    </div>
+    <div class="map-overlay" id="footer">
+      <p>
+        Interactive map built by Akshar and Pritish for
+        <strong>ECO-3650: Health Economics</strong> taught by
+        <strong>Professor Aparajita Dasgupta</strong> (2021)
+      </p>
+    </div>
+  </body>
 
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </html>
