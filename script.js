@@ -1,9 +1,9 @@
 // This token will not work for anyone else, please make your own token to access mapbox
-mapboxgl.accessToken = process.env.MAPBOX_TOKEN
+mapboxgl.accessToken = 'pk.eyJ1IjoicHJpdGlzaDUwOSIsImEiOiJja3YzaTZzNzU0OGIxMzBzNzljdHdhb3g3In0.waaFZiEvtv7mzgcVhs5_Bw';
 
 const map = new mapboxgl.Map({
   container: "map",
-  style: process.env.MAPBOX_MAPSTYLE,
+  style: 'mapbox://styles/pritish509/ckvc0ze0uczk514p8ylwc7mnh',
 });
 
 const afghanBoundsCoordinates = [
