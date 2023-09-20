@@ -1,4 +1,4 @@
-// This token will not work for anyone else, please make your own token to access mapbox
+// This token will not work for anyone else, please generate your own token to access Mapbox
 mapboxgl.accessToken = 'pk.eyJ1IjoicHJpdGlzaDUwOSIsImEiOiJja3YzaTZzNzU0OGIxMzBzNzljdHdhb3g3In0.waaFZiEvtv7mzgcVhs5_Bw';
 
 const map = new mapboxgl.Map({
