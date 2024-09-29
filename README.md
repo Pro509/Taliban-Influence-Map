@@ -4,8 +4,7 @@ The aim of the interactive map is to visualize province-wise Taliban influence l
 
 ## Data
 
-- The Taliban influence level data for each province is sourced from FDD's Long War Journal.
-- Province-wise summary data is sourced from the Demographic and Health Survey conducted in the years 2010 and 2015.
+The Taliban influence level data for each province is sourced from FDD's Long War Journal.
 
 ---
-Visit the interactive dashboard by clicking [here](https://taliban-healthecon21.netlify.app/)!
+Visit the interactive dashboard by clicking [here](https://talibaninafghan.netlify.app/)! 
